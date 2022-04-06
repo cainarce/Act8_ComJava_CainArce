@@ -35,18 +35,23 @@ public class Deck {
         System.out.println("Se mezcló el Deck.");
     }
 
-    public void head(){
-        if(cardsDeck.size()>0){
+    public void head() throws Exception{
+        /*if(cardsDeck.size()>0){
             System.out.println(cardsDeck.get(0).palo + " " + cardsDeck.get(0).color + " " + cardsDeck.get(0).valor);
             cardsDeck.remove(0);
             System.out.println("Quedan " + cardsDeck.size() + " cartas en deck.");
         } else {
             System.out.println("No hay suficientes cartas en el Deck.");
-        }
+        }*/
+
+        System.out.println(cardsDeck.get(0).palo + " " + cardsDeck.get(0).color + " " + cardsDeck.get(0).valor);
+        cardsDeck.remove(0);
+        System.out.println("Quedan " + cardsDeck.size() + " cartas en deck.");
+
     }
 
-    public void pick(){
-        if(cardsDeck.size()>0){
+    public void pick() throws Exception{
+        /*if(cardsDeck.size()>0){
             Random rand = new Random();
             int numRandom = rand.nextInt(cardsDeck.size()-1);
 
@@ -54,16 +59,26 @@ public class Deck {
             cardsDeck.remove(numRandom);
         } else {
             System.out.println("No hay suficientes cartas en el Deck.");
-        }
+        }*/
+
+        Random rand = new Random();
+        int numRandom = rand.nextInt(cardsDeck.size()-1);
+
+        System.out.println(cardsDeck.get(numRandom).palo + " " + cardsDeck.get(numRandom).color + " " + cardsDeck.get(numRandom).valor);
+        cardsDeck.remove(numRandom);
     }
 
-    public void hand() {
-        if (cardsDeck.size() >= 5){
+    public void hand() throws Exception{
+        /*if (cardsDeck.size() >= 5){
             for (int i = 0; i < 5; i++) {
                 pick();
             }
         } else {
             System.out.println("No hay suficientes cartas en el Deck.");
+        }*/
+
+        for (int i = 0; i < 5; i++) {
+            pick();
         }
     }
 

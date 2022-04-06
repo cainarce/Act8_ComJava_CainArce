@@ -5,14 +5,20 @@ public class Main {
     public static void main(String[] args) {
         Deck card = new Deck();
         card.Deck();
-        int op;
+        int op = 0;
 
+        System.out.println("-----------------------------");
         System.out.println("BIENVENIDO AL JUEGO DE CARTAS");
+        System.out.println("-----------------------------");
         do{
-            showMenu();
+            try {
+                showMenu();
 
-            Scanner leer = new Scanner(System.in);
-            op = leer.nextInt();
+                Scanner leer = new Scanner(System.in);
+                op = leer.nextInt();
+            } catch (Exception e) {
+                System.out.println("Opción no válida.");
+            }
 
             switch (op){
                 case 0:
@@ -24,28 +30,43 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Método head:");
-                    card.head();
+                    try {
+                        card.head();
+                    } catch (Exception e) {
+                        System.out.println("No hay suficientes cartas en el Deck.");
+                    }
                     break;
                 case 3:
                     System.out.println("Método pick:");
-                    card.pick();
+                    try {
+                        card.pick();
+                    } catch (Exception e) {
+                        System.out.println("No hay suficientes cartas en el Deck.");
+                    }
                     System.out.println("Quedan " + card.cardsDeck.size() + " cartas en deck.");
                     break;
                 case 4:
                     System.out.println("Método hand:");
-                    card.hand();
+                    try {
+                        card.hand();
+                    } catch (Exception e) {
+                        System.out.println("No hay suficientes cartas en el Deck.");
+                    }
                     System.out.println("Quedan " + card.cardsDeck.size() + " cartas en deck.");
                     break;
                 case 5:
                     System.out.println("Se reinició el juego");
                     card.Deck();
                     break;
+                default:
+                    System.out.println("Opción no válida.");
+                    break;
             }
         }while(op!=0);
 
     }
 
-    public static void showMenu(){
+    public static void showMenu() throws Exception{
         System.out.println("0 - Salir");
         System.out.println("1 - Revolver cartas");
         System.out.println("2 - Sacar primer carta del Deck");
